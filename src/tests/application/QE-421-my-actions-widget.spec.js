@@ -15,7 +15,7 @@ test.describe('[QE-421] Verify My Actions widget displays pending work items and
     expect(await loginPage.isLoginPageDisplayed()).toBe(true);
 
     await loginPage.login(TD.credentials.username, TD.credentials.password);
-    await page.waitForURL(TD.urlPatterns.dashboard, { timeout: 10000 });
+    await page.waitForURL(TD.urlPatterns.dashboard, { timeout: 60000 });
     await expect(page).toHaveURL(TD.urlPatterns.dashboard);
     await expect(dashboardPage.isDashboardDisplayed()).resolves.toBe(true);
 

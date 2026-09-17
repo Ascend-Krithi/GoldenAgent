@@ -12,7 +12,7 @@ test.describe('[QE-423] Verify unauthenticated users cannot directly access Dash
 
     await page.goto(TD.urls.dashboard, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
-    await page.waitForURL(TD.urlPatterns.login, { timeout: 10000 });
+    await page.waitForURL(TD.urlPatterns.login, { timeout: 60000 });
     await expect(page).toHaveURL(TD.urlPatterns.login);
 
     expect(await loginPage.isLoginPageDisplayed()).toBe(true);

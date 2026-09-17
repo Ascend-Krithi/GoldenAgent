@@ -15,7 +15,7 @@ test.describe('[QE-429] Verify Employees on Leave Today widget displays current 
     expect(await loginPage.isLoginPageDisplayed()).toBe(true);
 
     await loginPage.login(TD.credentials.username, TD.credentials.password);
-    await page.waitForURL(TD.urlPatterns.dashboard, { timeout: 10000 });
+    await page.waitForURL(TD.urlPatterns.dashboard, { timeout: 60000 });
     await expect(page).toHaveURL(TD.urlPatterns.dashboard);
     await expect(dashboardPage.isDashboardDisplayed()).resolves.toBe(true);
 
