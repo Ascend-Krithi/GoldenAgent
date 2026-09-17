@@ -11,6 +11,7 @@ class OrangeHRMLoginPage {
   }
 
   async isLoginPageDisplayed() {
+    await this.page.waitForLoadState('domcontentloaded');
     return await loc.loginHeading(this.page).isVisible();
   }
 
