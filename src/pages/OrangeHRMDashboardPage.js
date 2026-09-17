@@ -11,6 +11,7 @@ class OrangeHRMDashboardPage {
   }
 
   async isDashboardDisplayed() {
+    await loc.dashboardHeading(this.page).waitFor({ state: 'visible', timeout: 10000 });
     return await loc.dashboardHeading(this.page).isVisible();
   }
 
