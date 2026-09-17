@@ -31,7 +31,12 @@ class OrangeHRMLoginPage {
 
   async isLoginPageDisplayed() {
     await this.page.waitForLoadState('domcontentloaded');
-    return await loc.loginHeading(this.page).isVisible();
+    try {
+      await loc.loginHeading(this.page).waitFor({ state: 'visible', timeout: 10000 });
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   async fillUsername(username) {

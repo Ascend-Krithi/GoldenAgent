@@ -28,11 +28,21 @@ class OrangeHRMDashboardPage {
   }
 
   async isPendingSelfReviewVisible() {
-    return await loc.pendingSelfReview(this.page).isVisible();
+    try {
+      await loc.pendingSelfReview(this.page).waitFor({ state: 'visible', timeout: 5000 });
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   async isCandidateToInterviewVisible() {
-    return await loc.candidateToInterview(this.page).isVisible();
+    try {
+      await loc.candidateToInterview(this.page).waitFor({ state: 'visible', timeout: 5000 });
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   async getPendingSelfReviewText() {
@@ -56,7 +66,12 @@ class OrangeHRMDashboardPage {
       'My Leave': loc.quickLaunchMyLeave,
       'My Timesheet': loc.quickLaunchMyTimesheet
     };
-    return await shortcutMap[shortcutName](this.page).isVisible();
+    try {
+      await shortcutMap[shortcutName](this.page).waitFor({ state: 'visible', timeout: 10000 });
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   async countQuickLaunchShortcuts() {
