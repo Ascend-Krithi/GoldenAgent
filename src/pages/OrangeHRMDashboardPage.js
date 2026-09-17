@@ -75,6 +75,7 @@ class OrangeHRMDashboardPage {
   }
 
   async countQuickLaunchShortcuts() {
+    await loc.quickLaunchCard(this.page).waitFor({ state: 'visible', timeout: 10000 });
     const shortcuts = [
       loc.quickLaunchAssignLeave,
       loc.quickLaunchLeaveList,
@@ -85,8 +86,12 @@ class OrangeHRMDashboardPage {
     ];
     let count = 0;
     for (const shortcut of shortcuts) {
-      const isVisible = await shortcut(this.page).isVisible();
-      if (isVisible) count++;
+      try {
+        await shortcut(this.page).waitFor({ state: 'visible', timeout: 10000 });
+        count++;
+      } catch {
+        // Shortcut not visible, continue
+      }
     }
     return count;
   }
