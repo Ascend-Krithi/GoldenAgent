@@ -4,6 +4,15 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+    inputs:
+      language:
+        description: 'Language'
+        required: false
+        type: string
+      gate:
+        description: 'Gate'
+        required: false
+        type: string
 
 jobs:
   build-and-test:
