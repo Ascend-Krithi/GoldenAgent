@@ -12,7 +12,7 @@ test.describe('[QE-428] Verify Buzz Latest Posts widget displays recent internal
     dashboardPage = new OrangeHRMDashboardPage(page);
 
     await loginPage.goto();
-    await expect(loginPage.isLoginPageDisplayed()).resolves.toBe(true);
+    expect(await loginPage.isLoginPageDisplayed()).toBe(true);
 
     await loginPage.login(TD.credentials.username, TD.credentials.password);
     await page.waitForURL(TD.urlPatterns.dashboard, { timeout: 10000 });

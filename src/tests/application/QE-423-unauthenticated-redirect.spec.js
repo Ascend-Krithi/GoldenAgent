@@ -15,7 +15,7 @@ test.describe('[QE-423] Verify unauthenticated users cannot directly access Dash
     await page.waitForURL(TD.urlPatterns.login, { timeout: 10000 });
     await expect(page).toHaveURL(TD.urlPatterns.login);
 
-    await expect(loginPage.isLoginPageDisplayed()).resolves.toBe(true);
+    expect(await loginPage.isLoginPageDisplayed()).toBe(true);
 
     await expect(loginPage.isUsernameFieldVisible()).resolves.toBe(true);
     await expect(loginPage.isPasswordFieldVisible()).resolves.toBe(true);

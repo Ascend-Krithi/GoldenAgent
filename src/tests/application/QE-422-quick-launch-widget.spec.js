@@ -12,7 +12,7 @@ test.describe('[QE-422] Verify Quick Launch widget displays all six expected sho
     dashboardPage = new OrangeHRMDashboardPage(page);
 
     await loginPage.goto();
-    await expect(loginPage.isLoginPageDisplayed()).resolves.toBe(true);
+    expect(await loginPage.isLoginPageDisplayed()).toBe(true);
 
     await loginPage.login(TD.credentials.username, TD.credentials.password);
     await page.waitForURL(TD.urlPatterns.dashboard, { timeout: 10000 });
