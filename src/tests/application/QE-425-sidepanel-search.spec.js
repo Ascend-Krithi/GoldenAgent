@@ -17,7 +17,7 @@ test.describe('[QE-425] Verify sidepanel search textbox filters modules in left 
     await loginPage.login(TD.credentials.username, TD.credentials.password);
     await page.waitForURL(TD.urlPatterns.dashboard, { timeout: 60000 });
     await expect(page).toHaveURL(TD.urlPatterns.dashboard);
-    await expect(dashboardPage.isDashboardDisplayed()).resolves.toBe(true);
+    expect(await dashboardPage.isDashboardDisplayed()).toBe(true);
 
     await dashboardPage.searchSidenavModule('Leave');
     await page.waitForTimeout(1000);

@@ -18,7 +18,7 @@ test.describe('[QE-424] Verify top bar displays Dashboard page title and Upgrade
     await page.waitForURL(TD.urlPatterns.dashboard, { timeout: 60000 });
     await expect(page).toHaveURL(TD.urlPatterns.dashboard);
 
-    await expect(dashboardPage.isDashboardDisplayed()).resolves.toBe(true);
+    expect(await dashboardPage.isDashboardDisplayed()).toBe(true);
 
     const dashboardHeading = page.getByRole('heading', { name: 'Dashboard' });
     await expect(dashboardHeading).toBeVisible();

@@ -17,7 +17,7 @@ test.describe('[QE-428] Verify Buzz Latest Posts widget displays recent internal
     await loginPage.login(TD.credentials.username, TD.credentials.password);
     await page.waitForURL(TD.urlPatterns.dashboard, { timeout: 60000 });
     await expect(page).toHaveURL(TD.urlPatterns.dashboard);
-    await expect(dashboardPage.isDashboardDisplayed()).resolves.toBe(true);
+    expect(await dashboardPage.isDashboardDisplayed()).toBe(true);
 
     await expect(dashboardPage.isBuzzLatestPostsWidgetVisible()).resolves.toBe(true);
 
