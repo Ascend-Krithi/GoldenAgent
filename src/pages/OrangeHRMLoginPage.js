@@ -7,7 +7,26 @@ class OrangeHRMLoginPage {
   }
 
   async goto() {
-    await this.page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    const maxRetries = 3;
+    let lastError;
+    
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        await this.page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        
+        await loc.usernameInput(this.page).waitFor({ state: 'visible', timeout: 10000 });
+        await loc.passwordInput(this.page).waitFor({ state: 'visible', timeout: 10000 });
+        
+        return;
+      } catch (error) {
+        lastError = error;
+        if (attempt < maxRetries) {
+          await this.page.waitForTimeout(2000 * attempt);
+        }
+      }
+    }
+    
+    throw new Error(`Failed to navigate to login page after ${maxRetries} attempts: ${lastError.message}`);
   }
 
   async isLoginPageDisplayed() {
