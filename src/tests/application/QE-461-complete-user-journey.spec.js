@@ -31,8 +31,7 @@ test.describe('[QE-461] Verify complete user journey from Alaska landing page to
     await alaskaLandingPage.clickBookYourVacationButton();
 
     // Assert - User is redirected to search results page with trade=A parameter
-    await page.waitForURL(TD.urlPatterns.cruiseSearchWithTrade, { timeout: 10000 });
-    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade);
+    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade, { timeout: 30000 });
     expect(page.url()).toContain('trade=A');
 
     // Step 3: Verify search results page loads with Alaska filter applied

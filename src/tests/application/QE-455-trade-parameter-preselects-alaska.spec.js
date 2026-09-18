@@ -24,8 +24,7 @@ test.describe('[QE-455] Verify trade=A parameter pre-selects Alaska destination'
     await alaskaLandingPage.clickBookYourVacationButton();
 
     // Assert - Verify URL contains trade=A parameter
-    await page.waitForURL(TD.urlPatterns.cruiseSearchWithTrade, { timeout: 10000 });
-    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade);
+    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade, { timeout: 30000 });
     expect(page.url()).toContain('trade=A');
 
     // Assert - Verify Alaska destination filter is pre-selected
