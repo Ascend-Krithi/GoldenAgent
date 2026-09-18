@@ -18,8 +18,8 @@ class CruiseSearchPage {
       waitUntil: 'domcontentloaded',
       timeout: 60000
     });
-    await this.page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
-    await loc.cruiseCards(this.page).first().waitFor({ state: 'visible', timeout: 15000 }).catch(() => {});
+    await this.page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await loc.cruiseCards(this.page).first().waitFor({ state: 'visible', timeout: 30000 }).catch(() => {});
   }
 
   async isDestinationFilterVisible() {
