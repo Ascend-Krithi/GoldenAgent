@@ -15,10 +15,10 @@ test.describe('[QE-459] Verify clicking CRUISE DETAILS button opens Cruise Detai
   test('[QE-459] TS-008: Verify that clicking CRUISE DETAILS or VIEW CRUISE button opens the Cruise Details/Itinerary page', { timeout: 90000 }, async ({ page }) => {
     // Arrange - Navigate to cruise search results page with trade=A parameter
     await cruiseSearchPage.gotoWithTradeParameter(TD.tradeParameters.alaska);
-    await cruiseSearchPage.waitForCruiseCards();
 
     // Assert - Search results page loads with Alaska cruise cards
     await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade);
+    await expect(cruiseSearchPage.getFirstCruiseCard()).toBeVisible();
 
     // Act - Identify first cruise card with CTA button
     const isCTAVisible = await cruiseSearchPage.isCruiseCardCTAVisible(0);

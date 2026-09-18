@@ -12,7 +12,6 @@ test.describe('[QE-456] Verify search results page displays all required filter 
   test('[QE-456] TS-005: Verify that search results page displays all required filter controls (Destination, Departure Ports, Dates, Guests)', { timeout: 90000 }, async ({ page }) => {
     // Arrange & Act - Navigate to cruise search results page with trade=A parameter
     await cruiseSearchPage.gotoWithTradeParameter(TD.tradeParameters.alaska);
-    await cruiseSearchPage.waitForCruiseCards();
 
     // Assert - Search results page loads successfully
     await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade);

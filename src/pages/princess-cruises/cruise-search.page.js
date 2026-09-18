@@ -100,15 +100,6 @@ class CruiseSearchPage {
   getFirstCruiseCard() {
     return loc.firstCruiseCard(this.page);
   }
-
-  async waitForCruiseCards() {
-    try {
-      await loc.firstCruiseCard(this.page).waitFor({ state: 'visible', timeout: 60000 });
-    } catch (error) {
-      // Fallback: wait for any cruise card to be visible
-      await this.page.waitForSelector('article[class*="cruise-card"], div[class*="cruise-card"]', { state: 'visible', timeout: 60000 });
-    }
-  }
 }
 
 module.exports = CruiseSearchPage;
