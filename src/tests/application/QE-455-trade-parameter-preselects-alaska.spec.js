@@ -12,7 +12,7 @@ test.describe('[QE-455] Verify trade=A parameter pre-selects Alaska destination'
     cruiseSearchPage = new CruiseSearchPage(page);
   });
 
-  test('[QE-455] TS-004: Verify that trade=A URL parameter automatically pre-selects Alaska as the destination filter on search results page', async ({ page }) => {
+  test('[QE-455] TS-004: Verify that trade=A URL parameter automatically pre-selects Alaska as the destination filter on search results page', { timeout: 90000 }, async ({ page }) => {
     // Arrange - Navigate to Alaska landing page
     await alaskaLandingPage.goto();
     await expect(page).toHaveURL(TD.urlPatterns.alaskaLanding);

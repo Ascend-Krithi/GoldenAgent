@@ -38,10 +38,8 @@ class AlaskaLandingPage {
   }
 
   async clickBookYourVacationButton() {
-    await Promise.all([
-      this.page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 60000 }),
-      loc.bookYourVacationButton(this.page).click()
-    ]);
+    await loc.bookYourVacationButton(this.page).click();
+    await this.page.waitForURL(/\/cruise-search\/results\//, { timeout: 60000 });
     await this.page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
   }
 

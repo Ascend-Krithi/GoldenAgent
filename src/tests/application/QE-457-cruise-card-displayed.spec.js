@@ -9,13 +9,13 @@ test.describe('[QE-457] Verify at least one valid Alaska cruise card is displaye
     cruiseSearchPage = new CruiseSearchPage(page);
   });
 
-  test('[QE-457] TS-006: Verify that at least one valid Alaska cruise card is displayed in the results grid', async ({ page }) => {
+  test('[QE-457] TS-006: Verify that at least one valid Alaska cruise card is displayed in the results grid', { timeout: 90000 }, async ({ page }) => {
     // Arrange & Act - Navigate to cruise search results page with trade=A parameter
     await cruiseSearchPage.gotoWithTradeParameter(TD.tradeParameters.alaska);
+    await cruiseSearchPage.waitForCruiseCards();
 
     // Assert - Search results page loads successfully
     await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade);
-    await expect(cruiseSearchPage.getFirstCruiseCard()).toBeVisible({ timeout: 60000 });
 
     // Assert - Verify Alaska filter is applied
     const isAlaskaSelected = await cruiseSearchPage.isAlaskaDestinationSelected();

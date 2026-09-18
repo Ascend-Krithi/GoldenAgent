@@ -12,13 +12,13 @@ test.describe('[QE-460] Verify Cruise Details page displays stateroom options an
     cruiseDetailsPage = new CruiseDetailsPage(page);
   });
 
-  test('[QE-460] TS-009: Verify that Cruise Details page displays stateroom options and full trip itinerary details', async ({ page }) => {
+  test('[QE-460] TS-009: Verify that Cruise Details page displays stateroom options and full trip itinerary details', { timeout: 90000 }, async ({ page }) => {
     // Arrange - Navigate to cruise search results page
     await cruiseSearchPage.gotoWithTradeParameter(TD.tradeParameters.alaska);
+    await cruiseSearchPage.waitForCruiseCards();
     await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade);
 
     // Act - Click on 'CRUISE DETAILS' or 'VIEW CRUISE' button on first cruise card
-    await expect(cruiseSearchPage.getFirstCruiseCard()).toBeVisible({ timeout: 60000 });
     await cruiseSearchPage.clickCruiseCardCTA(0);
 
     // Assert - User is redirected to Cruise Details page

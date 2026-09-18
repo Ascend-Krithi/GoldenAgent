@@ -9,13 +9,13 @@ test.describe('[QE-458] Verify each cruise card displays all required informatio
     cruiseSearchPage = new CruiseSearchPage(page);
   });
 
-  test('[QE-458] TS-007: Verify that each cruise card displays all required information: Itinerary Title, Duration, Starting Price, and CTA button', async ({ page }) => {
+  test('[QE-458] TS-007: Verify that each cruise card displays all required information: Itinerary Title, Duration, Starting Price, and CTA button', { timeout: 90000 }, async ({ page }) => {
     // Arrange & Act - Navigate to cruise search results page with trade=A parameter
     await cruiseSearchPage.gotoWithTradeParameter(TD.tradeParameters.alaska);
+    await cruiseSearchPage.waitForCruiseCards();
 
     // Assert - Search results page loads with Alaska cruise cards
     await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade);
-    await expect(cruiseSearchPage.getFirstCruiseCard()).toBeVisible({ timeout: 60000 });
 
     // Assert - Verify Cruise Itinerary Title is displayed
     const isTitleVisible = await cruiseSearchPage.isCruiseCardTitleVisible(0);

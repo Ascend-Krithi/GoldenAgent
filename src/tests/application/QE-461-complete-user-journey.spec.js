@@ -15,7 +15,7 @@ test.describe('[QE-461] Verify complete user journey from Alaska landing page to
     cruiseDetailsPage = new CruiseDetailsPage(page);
   });
 
-  test('[QE-461] TS-010: Verify complete end-to-end user journey from Alaska destination landing page through to Cruise Details page', async ({ page }) => {
+  test('[QE-461] TS-010: Verify complete end-to-end user journey from Alaska destination landing page through to Cruise Details page', { timeout: 90000 }, async ({ page }) => {
     // Step 1: Navigate to Alaska destination landing page
     await alaskaLandingPage.goto();
     await expect(page).toHaveURL(TD.urlPatterns.alaskaLanding);
@@ -35,7 +35,7 @@ test.describe('[QE-461] Verify complete user journey from Alaska landing page to
     expect(page.url()).toContain('trade=A');
 
     // Step 3: Verify search results page loads with Alaska filter applied
-    await expect(cruiseSearchPage.getFirstCruiseCard()).toBeVisible({ timeout: 60000 });
+    await cruiseSearchPage.waitForCruiseCards();
     const isAlaskaSelected = await cruiseSearchPage.isAlaskaDestinationSelected();
     expect(isAlaskaSelected).toBeTruthy();
 

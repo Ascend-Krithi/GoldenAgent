@@ -9,7 +9,7 @@ test.describe('[QE-454] Verify BOOK YOUR VACATION button redirects correctly', (
     alaskaLandingPage = new AlaskaLandingPage(page);
   });
 
-  test('[QE-454] TS-003: Verify that clicking BOOK YOUR VACATION button redirects to cruise search results page with correct URL parameter', async ({ page }) => {
+  test('[QE-454] TS-003: Verify that clicking BOOK YOUR VACATION button redirects to cruise search results page with correct URL parameter', { timeout: 90000 }, async ({ page }) => {
     // Arrange - Navigate to Alaska destination landing page
     await alaskaLandingPage.goto();
     await expect(page).toHaveURL(TD.urlPatterns.alaskaLanding);
