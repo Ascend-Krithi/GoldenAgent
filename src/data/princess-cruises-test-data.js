@@ -7,7 +7,7 @@ const TD = {
   urlPatterns: {
     alaskaLanding: /\/cruise-destinations\/alaska-cruises$/,
     cruiseSearchResults: /\/cruise-search\/results/,
-    cruiseSearchWithTrade: /\/cruise-search\/results\/\?trade=A/,
+    cruiseSearchWithTrade: /.*cruise-search\/results\/\?trade=A.*/,
     cruiseDetails: /\/cruise-details\//,
   },
 
