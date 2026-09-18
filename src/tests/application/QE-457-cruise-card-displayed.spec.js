@@ -1,4 +1,4 @@
-const { test, expect } = require('../../fixtures');
+const { test, expect } = require('@playwright/test');
 const CruiseSearchPage = require('../../pages/princess-cruises/cruise-search.page');
 const TD = require('../../data/princess-cruises-test-data');
 
