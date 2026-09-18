@@ -24,7 +24,7 @@ test.describe('[QE-454] Verify BOOK YOUR VACATION button redirects correctly', (
     await alaskaLandingPage.clickBookYourVacationButton();
 
     // Assert - Verify redirection to cruise search results page
-    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade, { timeout: 30000 });
+    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade);
     expect(page.url()).toContain('trade=A');
   });
 });
