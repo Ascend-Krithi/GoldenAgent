@@ -10,7 +10,6 @@ class CruiseSearchResultsPage {
     const fullURL = tradeParam ? `${URL}?trade=${tradeParam}` : URL;
     await this.page.goto(fullURL, { waitUntil: 'domcontentloaded', timeout: 60000 });
     await this.page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
-    await this.page.waitForTimeout(2000);
   }
 
   async isSearchResultsContainerVisible() {
