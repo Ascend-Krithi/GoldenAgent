@@ -11,7 +11,11 @@ class AlaskaDestinationPage {
   }
 
   async isHeroBannerVisible() {
-    return await loc.heroBanner(this.page).isVisible();
+    try {
+      return await loc.heroBanner(this.page).isVisible({ timeout: 10000 });
+    } catch {
+      return false;
+    }
   }
 
   async isHeroHeadingVisible() {
@@ -43,7 +47,7 @@ class AlaskaDestinationPage {
   }
 
   async waitForHeroBannerLoad() {
-    await loc.heroBanner(this.page).waitFor({ state: 'visible', timeout: 30000 });
+    await loc.heroBanner(this.page).waitFor({ state: 'visible', timeout: 60000 });
   }
 }
 

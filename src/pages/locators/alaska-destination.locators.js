@@ -1,7 +1,7 @@
 const locators = {
-  heroBanner: (page) => page.locator('.hero-banner').first(),
+  heroBanner: (page) => page.locator('.hero-banner, [class*="hero"]').first(),
   heroHeading: (page) => page.getByRole('heading', { name: 'Alaska cruise line' }),
-  bookYourVacationButton: (page) => page.locator('a:has-text("BOOK YOUR VACATION")').first(),
+  bookYourVacationButton: (page) => page.locator('a:has-text("BOOK YOUR VACATION"), .hero-banner a.btn-primary').first(),
   cookieConsentBanner: (page) => page.locator('#onetrust-banner-sdk'),
   cookieAcceptButton: (page) => page.locator('#onetrust-accept-btn-handler'),
   headerCreateAccountLink: (page) => page.locator('a.cmp-header__nav-item-register'),

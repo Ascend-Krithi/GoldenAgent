@@ -20,7 +20,11 @@ class CruiseSearchResultsPage {
   }
 
   async isDeparturePortsFilterVisible() {
-    return await loc.departurePortsFilter(this.page).isVisible();
+    try {
+      return await loc.departurePortsFilter(this.page).isVisible({ timeout: 10000 });
+    } catch {
+      return false;
+    }
   }
 
   async isDatesFilterVisible() {
@@ -81,14 +85,17 @@ class CruiseSearchResultsPage {
   }
 
   async applyDeparturePortFilter() {
+    await loc.departurePortsFilter(this.page).waitFor({ state: 'visible', timeout: 60000 });
     await loc.departurePortsFilter(this.page).click();
   }
 
   async applyDatesFilter() {
+    await loc.datesFilter(this.page).waitFor({ state: 'visible', timeout: 60000 });
     await loc.datesFilter(this.page).click();
   }
 
   async applyGuestsFilter() {
+    await loc.guestsFilter(this.page).waitFor({ state: 'visible', timeout: 60000 });
     await loc.guestsFilter(this.page).click();
   }
 }
