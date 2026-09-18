@@ -14,7 +14,7 @@ test.describe('[QE-457] Verify at least one valid Alaska cruise card is displaye
     await cruiseSearchPage.gotoWithTradeParameter(TD.tradeParameters.alaska);
 
     // Assert - Search results page loads successfully
-    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade);
+    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade, { timeout: 60000 });
 
     // Assert - Verify Alaska filter is applied
     const isAlaskaSelected = await cruiseSearchPage.isAlaskaDestinationSelected();

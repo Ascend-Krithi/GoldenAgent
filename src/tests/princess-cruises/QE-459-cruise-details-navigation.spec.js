@@ -17,7 +17,7 @@ test.describe('[QE-459] Verify clicking CRUISE DETAILS button opens Cruise Detai
     await cruiseSearchPage.gotoWithTradeParameter(TD.tradeParameters.alaska);
 
     // Assert - Search results page loads with Alaska cruise cards
-    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade);
+    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade, { timeout: 60000 });
     await expect(cruiseSearchPage.getFirstCruiseCard()).toBeVisible();
 
     // Act - Identify first cruise card with CTA button

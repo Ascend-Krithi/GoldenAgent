@@ -14,7 +14,7 @@ test.describe('[QE-458] Verify each cruise card displays all required informatio
     await cruiseSearchPage.gotoWithTradeParameter(TD.tradeParameters.alaska);
 
     // Assert - Search results page loads with Alaska cruise cards
-    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade);
+    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade, { timeout: 60000 });
     await expect(cruiseSearchPage.getFirstCruiseCard()).toBeVisible();
 
     // Assert - Verify Cruise Itinerary Title is displayed

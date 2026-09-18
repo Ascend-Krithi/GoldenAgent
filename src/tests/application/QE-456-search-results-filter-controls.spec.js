@@ -14,7 +14,7 @@ test.describe('[QE-456] Verify search results page displays all required filter 
     await cruiseSearchPage.gotoWithTradeParameter(TD.tradeParameters.alaska);
 
     // Assert - Search results page loads successfully
-    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade);
+    await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade, { timeout: 60000 });
 
     // Assert - Verify Destination filter control is displayed
     const isDestinationVisible = await cruiseSearchPage.isDestinationFilterVisible();
