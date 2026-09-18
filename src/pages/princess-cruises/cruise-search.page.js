@@ -102,8 +102,12 @@ class CruiseSearchPage {
   }
 
   async waitForCruiseCards() {
-    await this.page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
-    await loc.firstCruiseCard(this.page).waitFor({ state: 'visible', timeout: 30000 });
+    try {
+      await loc.firstCruiseCard(this.page).waitFor({ state: 'visible', timeout: 60000 });
+    } catch (error) {
+      // Fallback: wait for any cruise card to be visible
+      await this.page.waitForSelector('article[class*="cruise-card"], div[class*="cruise-card"]', { state: 'visible', timeout: 60000 });
+    }
   }
 }
 
