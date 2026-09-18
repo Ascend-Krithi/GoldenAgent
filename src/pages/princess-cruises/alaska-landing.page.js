@@ -38,8 +38,11 @@ class AlaskaLandingPage {
   }
 
   async clickBookYourVacationButton() {
-    await loc.bookYourVacationButton(this.page).click();
-    await this.page.waitForLoadState('domcontentloaded', { timeout: 60000 });
+    await Promise.all([
+      this.page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 60000 }),
+      loc.bookYourVacationButton(this.page).click()
+    ]);
+    await this.page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
   }
 
   getHeroBanner() {
