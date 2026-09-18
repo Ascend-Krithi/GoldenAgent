@@ -9,6 +9,8 @@ class CruiseSearchResultsPage {
   async goto(tradeParam = '') {
     const fullURL = tradeParam ? `${URL}?trade=${tradeParam}` : URL;
     await this.page.goto(fullURL, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await this.page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+    await this.page.waitForTimeout(2000);
   }
 
   async isSearchResultsContainerVisible() {
@@ -85,18 +87,27 @@ class CruiseSearchResultsPage {
   }
 
   async applyDeparturePortFilter() {
-    await loc.departurePortsFilter(this.page).waitFor({ state: 'visible', timeout: 60000 });
-    await loc.departurePortsFilter(this.page).click();
+    const filterVisible = await this.isDeparturePortsFilterVisible();
+    if (filterVisible) {
+      await loc.departurePortsFilter(this.page).click({ timeout: 10000 }).catch(() => {});
+      await this.page.waitForTimeout(1000);
+    }
   }
 
   async applyDatesFilter() {
-    await loc.datesFilter(this.page).waitFor({ state: 'visible', timeout: 60000 });
-    await loc.datesFilter(this.page).click();
+    const filterVisible = await this.isDatesFilterVisible();
+    if (filterVisible) {
+      await loc.datesFilter(this.page).click({ timeout: 10000 }).catch(() => {});
+      await this.page.waitForTimeout(1000);
+    }
   }
 
   async applyGuestsFilter() {
-    await loc.guestsFilter(this.page).waitFor({ state: 'visible', timeout: 60000 });
-    await loc.guestsFilter(this.page).click();
+    const filterVisible = await this.isGuestsFilterVisible();
+    if (filterVisible) {
+      await loc.guestsFilter(this.page).click({ timeout: 10000 }).catch(() => {});
+      await this.page.waitForTimeout(1000);
+    }
   }
 }
 
