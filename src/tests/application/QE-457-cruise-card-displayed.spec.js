@@ -12,6 +12,7 @@ test.describe('[QE-457] Verify at least one valid Alaska cruise card is displaye
   test('[QE-457] TS-006: Verify that at least one valid Alaska cruise card is displayed in the results grid', async ({ page }) => {
     // Arrange & Act - Navigate to cruise search results page with trade=A parameter
     await cruiseSearchPage.gotoWithTradeParameter(TD.tradeParameters.alaska);
+    await cruiseSearchPage.waitForCruiseCards();
 
     // Assert - Search results page loads successfully
     await expect(page).toHaveURL(TD.urlPatterns.cruiseSearchWithTrade);

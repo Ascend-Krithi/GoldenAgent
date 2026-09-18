@@ -18,6 +18,7 @@ class CruiseSearchPage {
       waitUntil: 'domcontentloaded',
       timeout: 60000
     });
+    await this.page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
   }
 
   async isDestinationFilterVisible() {
@@ -98,6 +99,10 @@ class CruiseSearchPage {
 
   getFirstCruiseCard() {
     return loc.firstCruiseCard(this.page);
+  }
+
+  async waitForCruiseCards() {
+    await this.page.waitForSelector('article[class*="cruise-card"], div[class*="cruise-card"], [class*="cruise-result"]', { timeout: 10000 });
   }
 }
 
