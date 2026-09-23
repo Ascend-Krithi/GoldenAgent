@@ -1,4 +1,4 @@
-const { test, expect } = require('../../fixtures');
+const { test, expect } = require('@playwright/test');
 const LoginPage = require('../../pages/login/login.page');
 const DashboardPage = require('../../pages/dashboard/dashboard.page');
 const TD = require('../../data/orangehrm-test-data');
