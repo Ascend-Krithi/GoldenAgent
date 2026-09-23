@@ -7,23 +7,43 @@ class LoginPage {
   }
 
   async goto() {
-    await this.page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await this.page.goto(URL, { waitUntil: 'networkidle', timeout: 60000 });
   }
 
   async isLoginHeadingVisible() {
-    return await loc.loginHeading(this.page).isVisible();
+    try {
+      await loc.loginHeading(this.page).waitFor({ state: 'visible', timeout: 10000 });
+      return await loc.loginHeading(this.page).isVisible();
+    } catch {
+      return false;
+    }
   }
 
   async isUsernameFieldVisible() {
-    return await loc.usernameInput(this.page).isVisible();
+    try {
+      await loc.usernameInput(this.page).waitFor({ state: 'visible', timeout: 10000 });
+      return await loc.usernameInput(this.page).isVisible();
+    } catch {
+      return false;
+    }
   }
 
   async isPasswordFieldVisible() {
-    return await loc.passwordInput(this.page).isVisible();
+    try {
+      await loc.passwordInput(this.page).waitFor({ state: 'visible', timeout: 10000 });
+      return await loc.passwordInput(this.page).isVisible();
+    } catch {
+      return false;
+    }
   }
 
   async isLoginButtonVisible() {
-    return await loc.loginButton(this.page).isVisible();
+    try {
+      await loc.loginButton(this.page).waitFor({ state: 'visible', timeout: 10000 });
+      return await loc.loginButton(this.page).isVisible();
+    } catch {
+      return false;
+    }
   }
 
   async isUsernameFieldEnabled() {

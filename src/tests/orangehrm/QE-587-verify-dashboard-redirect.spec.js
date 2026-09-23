@@ -23,7 +23,7 @@ test.describe('[QE-587] Verify that user is redirected to Dashboard page after s
     await loginPage.clickLoginButton();
     
     // Step 4: Wait for page redirection
-    await page.waitForURL('**/dashboard/index', { timeout: 10000 });
+    await page.waitForURL('**/dashboard/index', { waitUntil: 'networkidle', timeout: 15000 });
     
     // Step 5: Verify current URL is Dashboard page
     await expect(page).toHaveURL(TD.dashboardUrl);

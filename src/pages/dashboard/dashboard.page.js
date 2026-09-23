@@ -7,7 +7,7 @@ class DashboardPage {
   }
 
   async goto() {
-    await this.page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await this.page.goto(URL, { waitUntil: 'networkidle', timeout: 60000 });
   }
 
   async isDashboardHeadingVisible() {
