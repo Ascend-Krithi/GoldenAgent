@@ -18,6 +18,7 @@ test.describe('[QE-592] Verify that dashboard information is displayed without e
     
     // Step 2: Wait for complete page load
     await page.waitForLoadState('domcontentloaded');
+    await page.waitForSelector('.orangehrm-dashboard-widget', { timeout: 10000 });
     await page.waitForLoadState('networkidle', { timeout: 10000 });
     
     // Step 3: Verify no error messages are displayed

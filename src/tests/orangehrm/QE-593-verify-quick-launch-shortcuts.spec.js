@@ -18,7 +18,11 @@ test.describe('[QE-593] Verify that Quick Launch shortcuts are accessible and na
   });
 
   test('[QE-593-1] Verify Assign Leave shortcut navigation', async ({ page }) => {
-    // Step 2: Locate Quick Launch widget
+    // Step 2: Wait for Dashboard widgets to load
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForSelector('.orangehrm-dashboard-widget', { timeout: 10000 });
+    
+    // Locate Quick Launch widget
     const isQuickLaunchVisible = await dashboardPage.isQuickLaunchWidgetVisible();
     expect(isQuickLaunchVisible).toBe(true);
     
@@ -36,6 +40,9 @@ test.describe('[QE-593] Verify that Quick Launch shortcuts are accessible and na
   });
 
   test('[QE-593-2] Verify Leave List shortcut navigation', async ({ page }) => {
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForSelector('.orangehrm-dashboard-widget', { timeout: 10000 });
+    
     const isQuickLaunchVisible = await dashboardPage.isQuickLaunchWidgetVisible();
     expect(isQuickLaunchVisible).toBe(true);
     
@@ -53,6 +60,9 @@ test.describe('[QE-593] Verify that Quick Launch shortcuts are accessible and na
   });
 
   test('[QE-593-3] Verify Timesheets shortcut navigation', async ({ page }) => {
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForSelector('.orangehrm-dashboard-widget', { timeout: 10000 });
+    
     const isQuickLaunchVisible = await dashboardPage.isQuickLaunchWidgetVisible();
     expect(isQuickLaunchVisible).toBe(true);
     
@@ -70,6 +80,9 @@ test.describe('[QE-593] Verify that Quick Launch shortcuts are accessible and na
   });
 
   test('[QE-593-4] Verify Apply Leave shortcut navigation', async ({ page }) => {
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForSelector('.orangehrm-dashboard-widget', { timeout: 10000 });
+    
     const isQuickLaunchVisible = await dashboardPage.isQuickLaunchWidgetVisible();
     expect(isQuickLaunchVisible).toBe(true);
     
@@ -87,6 +100,9 @@ test.describe('[QE-593] Verify that Quick Launch shortcuts are accessible and na
   });
 
   test('[QE-593-5] Verify My Leave shortcut navigation', async ({ page }) => {
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForSelector('.orangehrm-dashboard-widget', { timeout: 10000 });
+    
     const isQuickLaunchVisible = await dashboardPage.isQuickLaunchWidgetVisible();
     expect(isQuickLaunchVisible).toBe(true);
     
@@ -104,6 +120,9 @@ test.describe('[QE-593] Verify that Quick Launch shortcuts are accessible and na
   });
 
   test('[QE-593-6] Verify My Timesheet shortcut navigation', async ({ page }) => {
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForSelector('.orangehrm-dashboard-widget', { timeout: 10000 });
+    
     const isQuickLaunchVisible = await dashboardPage.isQuickLaunchWidgetVisible();
     expect(isQuickLaunchVisible).toBe(true);
     

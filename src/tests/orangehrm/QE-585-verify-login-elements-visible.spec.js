@@ -10,6 +10,7 @@ test.describe('[QE-585] Verify that Username field, Password field, and Login bu
     
     // Step 1: Navigate to OrangeHRM login page
     await loginPage.goto();
+    await page.waitForLoadState('domcontentloaded');
     await expect(page).toHaveURL(TD.loginUrl);
     
     // Step 2: Verify Username field is visible
