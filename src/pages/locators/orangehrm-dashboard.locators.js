@@ -1,0 +1,26 @@
+const locators = {
+  dashboardHeading: (page) => page.locator('h6.oxd-topbar-header-breadcrumb-module'),
+  dashboardHeadingByRole: (page) => page.getByRole('heading', { name: 'Dashboard' }),
+  leftNavSearch: (page) => page.locator('aside input[placeholder="Search"]'),
+  upgradeButton: (page) => page.locator('button.orangehrm-upgrade-button'),
+  userDropdown: (page) => page.locator('.oxd-userdropdown-tab'),
+  activeDashboardNavLink: (page) => page.locator('aside a[href="/web/index.php/dashboard/index"]'),
+  adminNavLink: (page) => page.locator('aside a[href="/web/index.php/admin/viewAdminModule"]'),
+  pimNavLink: (page) => page.locator('aside a[href="/web/index.php/pim/viewPimModule"]'),
+  leaveNavLink: (page) => page.locator('aside a[href="/web/index.php/leave/viewLeaveModule"]'),
+  timeNavLink: (page) => page.locator('aside a[href="/web/index.php/time/viewTimeModule"]'),
+  recruitmentNavLink: (page) => page.locator('aside a[href="/web/index.php/recruitment/viewRecruitmentModule"]'),
+  myInfoNavLink: (page) => page.locator('aside a[href="/web/index.php/pim/viewMyDetails"]'),
+  performanceNavLink: (page) => page.locator('aside a[href="/web/index.php/performance/viewPerformanceModule"]'),
+  directoryNavLink: (page) => page.locator('aside a[href="/web/index.php/directory/viewDirectory"]'),
+  maintenanceNavLink: (page) => page.locator('aside a[href="/web/index.php/maintenance/viewMaintenanceModule"]'),
+  claimNavLink: (page) => page.locator('aside a[href="/web/index.php/claim/viewClaimModule"]'),
+  buzzNavLink: (page) => page.locator('aside a[href="/web/index.php/buzz/viewBuzz"]'),
+  timeAtWorkCard: (page) => page.locator('.orangehrm-dashboard-widget').filter({ has: page.getByText('Time at Work', { exact: true }) }).first(),
+  myActionsCard: (page) => page.locator('.orangehrm-dashboard-widget').filter({ has: page.getByText('My Actions', { exact: true }) }).first(),
+  quickLaunchCard: (page) => page.locator('.orangehrm-dashboard-widget').filter({ has: page.getByText('Quick Launch', { exact: true }) }).first(),
+  buzzLatestPostsCard: (page) => page.locator('.orangehrm-dashboard-widget').filter({ has: page.getByText('Buzz Latest Posts', { exact: true }) }).first(),
+  employeesOnLeaveTodayCard: (page) => page.locator('.orangehrm-dashboard-widget').filter({ has: page.getByText('Employees on Leave Today', { exact: true }) }).first(),
+};
+
+module.exports = locators;
